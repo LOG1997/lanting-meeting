@@ -1,10 +1,49 @@
-import React from 'react'
-export default function index() {
+import React, { useRef, useEffect } from 'react'
+import backgroundImage from '@/assets/images/background.jpg'
+import LeftContent from './components/LeftContent'
+import RightContent from './components/RightContent'
+import SecondContent from './components/SecondContent'
+import './index.scss'
+export default function Content() {
+
+    const imgBackground = useRef<HTMLDivElement>(null);
+    // 自动滚动
+
+    const motionBackground = () => {
+        if (imgBackground.current) {
+            imgBackground.current.scrollLeft = 300;
+            const timer = setInterval(() => {
+                imgBackground.current ? (imgBackground.current.scrollLeft += 0.2) : null;
+                // console.log('😈 imgBackground.current.scrollLeft:', imgBackground.current.scrollLeft)
+            }, 20)
+        }
+    }
+    useEffect(() => {
+        motionBackground();
+        // imgBackground.current.scrollLeft = 1200;
+    }, [])
     return (
-        <div style={{ width: "100%", height: "100%" }}>
-            <h1 style={{ position: "absolute", padding: "60px 0 0 200px", color: "white", zIndex: "1", fontSize: "90px" }}>Welcome</h1>
-            <h1 style={{ position: "absolute", padding: "250px 0 0 200px", color: "white", zIndex: "1", fontSize: "30px" }}>My Dir</h1>
-            <img style={{ width: "100%", height: "100%", backgroundRepeat: "no-repeat", margin: 0, padding: 0, filter: "blur(2px)", zIndex: "-1000" }} src="https://w.wallhaven.cc/full/x6/wallhaven-x662v3.png" alt="" />
-        </div >
+        <div className='content bg-blue-200 relative'>
+            <div className="back absolute w-full">
+                <div className='relative'>
+                    <div className="img-background-mask -z-49"></div>
+                    <div ref={imgBackground} className="img-background-container -z-50">
+                        <img src={backgroundImage} alt="" />
+                    </div>
+                </div>
+
+            </div>
+            <div className='content-container z-50 flex'>
+                <div>
+                    <LeftContent />
+                </div>
+                <div className='right-content-container'>
+                    <RightContent />
+                </div>
+            </div>
+            <div className='second-content min-h-96 w-full mt-10'>
+                <SecondContent />
+            </div>
+        </div>
     )
 }

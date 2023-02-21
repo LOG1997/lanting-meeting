@@ -1,0 +1,22 @@
+.right-content {
+    width: 100%;
+    .img-shadow {
+        margin-top: 10%;
+        width: 50%;
+        height: 20%;
+        position: absolute;
+        z-index: -10;
+        // 虚化
+        filter: blur(90px);
+        background-image: linear-gradient(to top right, #6a11cb 50%, #2575fc 50%);
+    }
+}
+@media screen and (max-width: 768px) {
+    .right-content {
+        width: 70%;
+        margin: 40px auto;
+        p {
+            line-height: 1.5;
+        }
+    }
+}

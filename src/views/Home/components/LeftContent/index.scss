@@ -1,0 +1,12 @@
+.left-content {
+    width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .left-content {
+        width: 70%;
+        margin: 40px auto;
+        p {
+            line-height: 1.5;
+        }
+    }
+}

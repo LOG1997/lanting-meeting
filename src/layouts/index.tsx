@@ -1,39 +1,22 @@
-import React, { useState } from 'react';
-
-import { useDispatch } from 'react-redux';
-import { Outlet } from "react-router-dom";
-import { Layout, theme } from 'antd';
-import { asyncGetUserinfo } from '@/reduce/modules/user';
-import HeaderContent from './HeaderContent';
-import '@/style/layout/index.scss'
-
-const { Content } = Layout;
-const LayoutContainer: React.FC = () => {
-    const dispatch = useDispatch();
-    dispatch(asyncGetUserinfo() as any)
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
+import React, { useRef, useEffect, useState } from 'react'
+import Header from './Header'
+import Footer from './Footer'
+import './index.scss'
+import { Outlet } from 'react-router-dom'
+export default function HomePage2() {
 
     return (
-        <Layout className='layout'>
-            {/* <SiderMenu collapsed={collapsed} ></SiderMenu> */}
-            <Layout className="site-layout">
-                <HeaderContent></HeaderContent>
-                <Content
-                    style={{
-                        margin: '24px 16px',
-                        // padding: 24,
-                        minHeight: 280,
-                        background: colorBgContainer,
-                        position: "relative"
-                    }}
-                >
-                    <Outlet></Outlet>
-                </Content>
-            </Layout>
-        </Layout >
-    );
-};
-
-export default LayoutContainer;
+        <div className='w-full h-screen bg-transparent'>
+            <div className='fixed w-full z-50'>
+                <Header></Header>
+            </div>
+            <div className='min-h-screen'>
+                {/* 路由 */}
+                <Outlet></Outlet>
+            </div>
+            <div>
+                <Footer></Footer>
+            </div>
+        </div>
+    )
+}

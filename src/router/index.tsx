@@ -8,61 +8,16 @@ const routes = [
     {
         path: "/",
         component: Layout,
+        redirect: "/home",
         children: [
             {
                 path: "/home",
+                name: "首页",
                 component: lazy(() => import('@/views/Home')),
-                auth: false,
-            },
-            {
-                path: "/admin",
-                component: lazy(() => import('@/views/Admin/User')),
-                children: [
-                    {
-                        path: "/admin/user",
-                        component: lazy(() => import('@/views/Admin/User')),
-                        auth: false,
-                    },
-                    {
-                        path: "/admin/role",
-                        component: lazy(() => import('@/views/Admin/Role')),
-                        auth: false,
-                    },
-                    {
-                        path: "/admin/menu",
-                        component: lazy(() => import('@/views/Admin/Menu')),
-                        auth: false,
-                    },
-                ]
-
-            },
-            {
-                path: "/dashbord",
-                component: lazy(() => import('@/views/DashBord')),
-                auth: false,
-            },
-            {
-                path: "/data-show",
-                component: lazy(() => import('@/views/DataShow')),
-                auth: false,
-            },
-            {
-                path: "/form",
-                component: lazy(() => import('@/views/Form')),
-                auth: false,
-            },
-            {
-                path: "/manage",
-                component: lazy(() => import('@/views/Manage')),
-                auth: false,
-
-
             },
             {
                 path: "*",
                 component: lazy(() => import('@/views/Error')),
-                auth: false,
-
             }
         ]
     }

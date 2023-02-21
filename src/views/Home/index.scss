@@ -1,0 +1,87 @@
+.img-background-container {
+    // margin-top: 60px;
+    // width: 120;
+    // height: calc(100vh - 60px);
+    overflow: auto;
+    // position: relative;
+    width: 100%;
+
+    // .img-background-mask {
+    //     height: 100%;
+    //     background-color: transparent;
+    //     background-image: linear-gradient(to top, #7028e499 0%, transparent 50%);
+    z-index: -50;
+    // }
+    img {
+        z-index: -100;
+        height: 100vh;
+        max-width: none;
+        max-height: 100%;
+        // object-fit: cover;
+    }
+}
+.img-background-mask {
+    // content: "";
+    z-index: 1;
+    position: absolute;
+    // display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, #202020 0%, #202020ed 40%, #202020b7 70%, transparent 110%);
+}
+.content {
+    // margin-top: 60px;
+    z-index: -10;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    align-items: center;
+    // height: calc(100vh - 60px);
+    // background-color: transparent;
+    .content-container {
+        height: 100%;
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        // margin-top: 200px;
+        // position: absolute;
+        position: relative;
+        max-width: 1200px;
+    }
+    .second-content {
+        position: relative;
+    }
+}
+@media (max-width: 768px) {
+    .img-background-container {
+        height: 100%;
+        img {
+            // height: 100%;
+        }
+    }
+    .content {
+        width: 100%;
+
+        .content-container {
+            margin-top: 12%;
+            display: flex;
+            flex-direction: column;
+            .right-content-container {
+                position: absolute;
+
+                margin-top: 160%;
+                .right-content {
+                    width: 100%;
+                    margin: 0 auto;
+                    p {
+                        line-height: 1.5;
+                    }
+                }
+            }
+        }
+        .second-content {
+        }
+    }
+}
