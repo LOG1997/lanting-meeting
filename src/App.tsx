@@ -7,7 +7,6 @@ import { AliveScope } from 'react-activation'
 import { Router } from "@/router";
 
 function App() {
-
   return (
     <Provider store={store}>
       <BrowserRouter><AliveScope>

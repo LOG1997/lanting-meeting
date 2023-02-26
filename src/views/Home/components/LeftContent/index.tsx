@@ -3,6 +3,9 @@ import SvgIcon from '@/components/SvgIcon'
 import './index.scss'
 import { getRandomGradientColor } from 'random-liner-gradient';
 import { motion, useInView } from "framer-motion"
+import { useNavigate } from 'react-router-dom'
+import FastClick from 'react-fastclick-alt';
+
 export default function LeftContent() {
     const styleInit = {
         backgroundImage: `${getRandomGradientColor()}`,
@@ -14,6 +17,11 @@ export default function LeftContent() {
     const onMouseOver = () => {
         // style.backgroundImage = `${randomGradientColor()}`;
         setStyle({ backgroundImage: `${getRandomGradientColor('', -361, 90)}` })
+    }
+
+    const navigate = useNavigate()
+    const handleSkip = (path: string) => () => {
+        navigate(path)
     }
     return (
         // <motion.div
@@ -43,7 +51,9 @@ export default function LeftContent() {
         >
             <div >
                 <div className="left-content h-full font-mono text-light-200 select-none" >
-                    <h2 className='text-6xl font-extrabold mb-12'>兰亭集会</h2>
+                    <h2 className='text-6xl font-extrabold mb-12'>
+                        <SvgIcon name="lantingTitle" iconStyle={{ width: 400, maxWidth: "100%", height: "100%" }}></SvgIcon>
+                    </h2>
                     <p className='text-xl'>
                         <SvgIcon name='location' ></SvgIcon>
                         <span> &nbsp;&nbsp;&nbsp; </span>
@@ -55,11 +65,12 @@ export default function LeftContent() {
                     <p className='tracking-widest text-xl'>近平十年，岁在癸卯，暮春之初。</p>
                     <p className='tracking-widest leading-loose text-xl'>夫人之相与，俯仰一世。或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。
                         虽趣舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至；及其所之既倦，情随事迁，感慨系之矣。
-                    </p><button className='bg-transparent'>
+                    </p>
+                    <button className='bg-transparent cursor-pointer' onMouseEnter={onMouseOver} onClick={() => { handleSkip('/form') }}>
                         <motion.div
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}>
-                            <div className='w-40 h-16 rounded-md text-light-200 text-2xl tracking-widest flex items-center justify-center cursor-pointer' style={style} onMouseEnter={onMouseOver}>
+                            <div className='w-40 h-16 rounded-md text-light-200 text-2xl tracking-widest flex items-center justify-center cursor-pointer' style={style}>
                                 <p><SvgIcon name='china' iconStyle={{ width: 30, height: 30 }}></SvgIcon>曲水流觞</p>
                             </div>
                         </motion.div></button>

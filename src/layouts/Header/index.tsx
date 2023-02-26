@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import SvgIcon from '@/components/SvgIcon'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -20,6 +21,8 @@ export default function index() {
             setHeaderFullStyle({ backdropFilter: "blur(0px)" })
         }
     }, [scroll.y])
+
+
     // scroll.y > 100 ? setHeaderFullStyle({ backdropFilter: "saturate(50 %) blur(20px)" }) : setHeaderFullStyle({ backdropFilter: "saturate(50 %) blur(0px)" })
     return (
         <div style={headerFullStyle} ref={headerFull} className='header-full w-full h-16 flex justify-center relative shadow-2xl' >
@@ -40,6 +43,7 @@ export default function index() {
                             navList.map((item, index) => {
                                 return (
                                     <p key={index} className='header-nav-item font-bold font-mono text-lg px-3 mt-3 cursor-pointer hover:text-light-50'>{item.name}</p>
+
                                 )
                             })
                         }

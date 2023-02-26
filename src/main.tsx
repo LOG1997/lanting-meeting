@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// import fastclick from 'fastclick';
+// fastclick.attach(document.body);
 import 'virtual:svg-icons-register'
 import 'virtual:windi.css'
 import 'bootstrap/dist/css/bootstrap.min.css';

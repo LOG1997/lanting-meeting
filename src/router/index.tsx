@@ -1,5 +1,5 @@
 
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 // import Loading from "@/components/Skeleton";
 import Layout from "@/layouts";
@@ -14,6 +14,10 @@ const routes = [
                 path: "/home",
                 name: "首页",
                 component: lazy(() => import('@/views/Home')),
+            }, {
+                path: "/form",
+                name: "表单",
+                component: lazy(() => import('@/views/Form')),
             },
             {
                 path: "*",
@@ -44,10 +48,10 @@ const generateRouter = (routers: any) => {
         if (item.children) {
             item.children = generateRouter(item.children);
         }
-        item.element = <Suspense fallback={<div>加载中</div>}>
-            <item.component />
-        </Suspense>;
-
+        item.element =
+            <Suspense fallback={<div>加载中</div>}>
+                <item.component />
+            </Suspense>;
         return item;
     });
 
